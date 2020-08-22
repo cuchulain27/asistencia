@@ -1,0 +1,11 @@
+C:\Users\Shado\source\repos\MSistemaAsistencia\Prj_Capa_Negocio\bin\Debug\Prj_Capa_Negocio.dll
+C:\Users\Shado\source\repos\MSistemaAsistencia\Prj_Capa_Negocio\bin\Debug\Prj_Capa_Negocio.pdb
+C:\Users\Shado\source\repos\MSistemaAsistencia\Prj_Capa_Negocio\bin\Debug\Plj_Capa_Datos.dll
+C:\Users\Shado\source\repos\MSistemaAsistencia\Prj_Capa_Negocio\bin\Debug\Plj_Capa_Entidad.dll
+C:\Users\Shado\source\repos\MSistemaAsistencia\Prj_Capa_Negocio\bin\Debug\Plj_Capa_Datos.pdb
+C:\Users\Shado\source\repos\MSistemaAsistencia\Prj_Capa_Negocio\bin\Debug\Plj_Capa_Entidad.pdb
+C:\Users\Shado\source\repos\MSistemaAsistencia\Prj_Capa_Negocio\obj\Debug\Prj_Capa_Negocio.csprojAssemblyReference.cache
+C:\Users\Shado\source\repos\MSistemaAsistencia\Prj_Capa_Negocio\obj\Debug\Prj_Capa_Negocio.csproj.CoreCompileInputs.cache
+C:\Users\Shado\source\repos\MSistemaAsistencia\Prj_Capa_Negocio\obj\Debug\Prj_Capa_Negocio.csproj.CopyComplete
+C:\Users\Shado\source\repos\MSistemaAsistencia\Prj_Capa_Negocio\obj\Debug\Prj_Capa_Negocio.dll
+C:\Users\Shado\source\repos\MSistemaAsistencia\Prj_Capa_Negocio\obj\Debug\Prj_Capa_Negocio.pdb
