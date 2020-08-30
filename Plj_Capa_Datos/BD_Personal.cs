@@ -186,7 +186,7 @@ namespace Plj_Capa_Datos
                 cn.ConnectionString = Conectar();
                 SqlDataAdapter da = new SqlDataAdapter("Sp_Cargar_PersonalxDni", cn);
                 da.SelectCommand.CommandType = CommandType.StoredProcedure;
-                da.SelectCommand.Parameters.AddWithValue("@oni", valor);
+                da.SelectCommand.Parameters.AddWithValue("@dni", valor);
                 DataTable dato = new DataTable();
 
                 da.Fill(dato);
