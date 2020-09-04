@@ -64,8 +64,9 @@
             this.pnl_titulo.Controls.Add(this.label1);
             this.pnl_titulo.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnl_titulo.Location = new System.Drawing.Point(0, 0);
+            this.pnl_titulo.Margin = new System.Windows.Forms.Padding(4);
             this.pnl_titulo.Name = "pnl_titulo";
-            this.pnl_titulo.Size = new System.Drawing.Size(788, 50);
+            this.pnl_titulo.Size = new System.Drawing.Size(1051, 62);
             this.pnl_titulo.TabIndex = 9;
             this.pnl_titulo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnl_titulo_MouseMove);
             // 
@@ -75,9 +76,10 @@
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.DimGray;
-            this.label7.Location = new System.Drawing.Point(3, 13);
+            this.label7.Location = new System.Drawing.Point(4, 16);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(343, 20);
+            this.label7.Size = new System.Drawing.Size(440, 22);
             this.label7.TabIndex = 25;
             this.label7.Text = "REGISTRO DACTILAR DE HUELLA DEL PERSONAL";
             // 
@@ -88,9 +90,10 @@
             this.btn_Salir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Salir.ForeColor = System.Drawing.Color.White;
             this.btn_Salir.Image = ((System.Drawing.Image)(resources.GetObject("btn_Salir.Image")));
-            this.btn_Salir.Location = new System.Drawing.Point(744, 8);
+            this.btn_Salir.Location = new System.Drawing.Point(992, 10);
+            this.btn_Salir.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Salir.Name = "btn_Salir";
-            this.btn_Salir.Size = new System.Drawing.Size(32, 32);
+            this.btn_Salir.Size = new System.Drawing.Size(43, 39);
             this.btn_Salir.TabIndex = 1;
             this.btn_Salir.UseVisualStyleBackColor = true;
             this.btn_Salir.Click += new System.EventHandler(this.btn_Salir_Click);
@@ -99,22 +102,31 @@
             // 
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label1.Location = new System.Drawing.Point(0, 48);
+            this.label1.Location = new System.Drawing.Point(0, 60);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(788, 2);
+            this.label1.Size = new System.Drawing.Size(1051, 2);
             this.label1.TabIndex = 0;
             // 
             // EnrollmentControl
             // 
             this.EnrollmentControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.EnrollmentControl.EnrolledFingerMask = 0;
-            this.EnrollmentControl.Location = new System.Drawing.Point(10, 56);
+            this.EnrollmentControl.Location = new System.Drawing.Point(13, 69);
+            this.EnrollmentControl.Margin = new System.Windows.Forms.Padding(5);
             this.EnrollmentControl.MaxEnrollFingerCount = 10;
             this.EnrollmentControl.Name = "EnrollmentControl";
             this.EnrollmentControl.ReaderSerialNumber = "00000000-0000-0000-0000-000000000000";
-            this.EnrollmentControl.Size = new System.Drawing.Size(492, 314);
+            this.EnrollmentControl.Size = new System.Drawing.Size(660, 386);
             this.EnrollmentControl.TabIndex = 10;
-           
+            this.EnrollmentControl.OnEnroll += new DPFP.Gui.Enrollment.EnrollmentControl._OnEnroll(this.EnrollmentControl_OnEnroll);
+            this.EnrollmentControl.OnFingerTouch += new DPFP.Gui.Enrollment.EnrollmentControl._OnFingerTouch(this.EnrollmentControl_OnFingerTouch);
+            this.EnrollmentControl.OnFingerRemove += new DPFP.Gui.Enrollment.EnrollmentControl._OnFingerRemove(this.EnrollmentControl_OnFingerRemove);
+            this.EnrollmentControl.OnReaderConnect += new DPFP.Gui.Enrollment.EnrollmentControl._OnReaderConnect(this.EnrollmentControl_OnReaderConnect);
+            this.EnrollmentControl.OnReaderDisconnect += new DPFP.Gui.Enrollment.EnrollmentControl._OnReaderDisconnect(this.EnrollmentControl_OnReaderDisconnect);
+            this.EnrollmentControl.OnSampleQuality += new DPFP.Gui.Enrollment.EnrollmentControl._OnSampleQuality(this.EnrollmentControl_OnSampleQuality);
+            this.EnrollmentControl.OnStartEnroll += new DPFP.Gui.Enrollment.EnrollmentControl._OnStartEnroll(this.EnrollmentControl_OnStartEnroll);
+            this.EnrollmentControl.Load += new System.EventHandler(this.EnrollmentControl_Load);
             // 
             // ListEvents
             // 
@@ -122,25 +134,29 @@
             this.ListEvents.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ListEvents.ForeColor = System.Drawing.Color.DimGray;
             this.ListEvents.FormattingEnabled = true;
-            this.ListEvents.Location = new System.Drawing.Point(23, 12);
+            this.ListEvents.ItemHeight = 16;
+            this.ListEvents.Location = new System.Drawing.Point(31, 15);
+            this.ListEvents.Margin = new System.Windows.Forms.Padding(4);
             this.ListEvents.Name = "ListEvents";
-            this.ListEvents.Size = new System.Drawing.Size(457, 104);
+            this.ListEvents.Size = new System.Drawing.Size(609, 128);
             this.ListEvents.TabIndex = 0;
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.ListEvents);
-            this.panel1.Location = new System.Drawing.Point(10, 376);
+            this.panel1.Location = new System.Drawing.Point(13, 463);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(492, 133);
+            this.panel1.Size = new System.Drawing.Size(656, 164);
             this.panel1.TabIndex = 11;
             // 
             // picFoto
             // 
-            this.picFoto.Location = new System.Drawing.Point(587, 65);
+            this.picFoto.Location = new System.Drawing.Point(783, 80);
+            this.picFoto.Margin = new System.Windows.Forms.Padding(4);
             this.picFoto.Name = "picFoto";
-            this.picFoto.Size = new System.Drawing.Size(114, 123);
+            this.picFoto.Size = new System.Drawing.Size(152, 151);
             this.picFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picFoto.TabIndex = 12;
             this.picFoto.TabStop = false;
@@ -150,9 +166,10 @@
             this.lbl_nomPersona.BackColor = System.Drawing.Color.Transparent;
             this.lbl_nomPersona.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_nomPersona.ForeColor = System.Drawing.Color.Black;
-            this.lbl_nomPersona.Location = new System.Drawing.Point(517, 218);
+            this.lbl_nomPersona.Location = new System.Drawing.Point(689, 268);
+            this.lbl_nomPersona.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_nomPersona.Name = "lbl_nomPersona";
-            this.lbl_nomPersona.Size = new System.Drawing.Size(259, 49);
+            this.lbl_nomPersona.Size = new System.Drawing.Size(345, 60);
             this.lbl_nomPersona.TabIndex = 26;
             this.lbl_nomPersona.Text = "REGISTRO DACTILAR DE HUELLA DEL PERSONAL";
             this.lbl_nomPersona.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -161,9 +178,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.DimGray;
-            this.label3.Location = new System.Drawing.Point(518, 200);
+            this.label3.Location = new System.Drawing.Point(691, 246);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(108, 13);
+            this.label3.Size = new System.Drawing.Size(145, 17);
             this.label3.TabIndex = 27;
             this.label3.Text = "Nombre del Personal:";
             // 
@@ -171,9 +189,10 @@
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.Color.DimGray;
-            this.label4.Location = new System.Drawing.Point(519, 287);
+            this.label4.Location = new System.Drawing.Point(692, 353);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(46, 13);
+            this.label4.Size = new System.Drawing.Size(60, 17);
             this.label4.TabIndex = 29;
             this.label4.Text = "Nro Dni:";
             // 
@@ -183,9 +202,10 @@
             this.lbl_nroDni.BackColor = System.Drawing.Color.Transparent;
             this.lbl_nroDni.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_nroDni.ForeColor = System.Drawing.Color.Black;
-            this.lbl_nroDni.Location = new System.Drawing.Point(526, 305);
+            this.lbl_nroDni.Location = new System.Drawing.Point(701, 375);
+            this.lbl_nroDni.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_nroDni.Name = "lbl_nroDni";
-            this.lbl_nroDni.Size = new System.Drawing.Size(24, 18);
+            this.lbl_nroDni.Size = new System.Drawing.Size(32, 23);
             this.lbl_nroDni.TabIndex = 28;
             this.lbl_nroDni.Text = "00";
             this.lbl_nroDni.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -202,9 +222,10 @@
             this.btn_cancelar.FlashStyle.PaintType = Klik.Windows.Forms.v1.Common.PaintTypes.Solid;
             this.btn_cancelar.FlashStyle.SolidColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(240)))), ((int)(((byte)(191)))));
             this.btn_cancelar.ForegroundImageStyle.ImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btn_cancelar.Location = new System.Drawing.Point(561, 388);
+            this.btn_cancelar.Location = new System.Drawing.Point(748, 478);
+            this.btn_cancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_cancelar.Name = "btn_cancelar";
-            this.btn_cancelar.Size = new System.Drawing.Size(172, 34);
+            this.btn_cancelar.Size = new System.Drawing.Size(229, 42);
             this.btn_cancelar.StateStyles.HoverStyle.BackgroundGradientEndColor = System.Drawing.Color.White;
             this.btn_cancelar.StateStyles.HoverStyle.BackgroundGradientStartColor = System.Drawing.Color.White;
             this.btn_cancelar.StateStyles.HoverStyle.BackgroundSolidColor = System.Drawing.Color.White;
@@ -226,19 +247,20 @@
             this.lbl_idperso.BackColor = System.Drawing.Color.Transparent;
             this.lbl_idperso.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_idperso.ForeColor = System.Drawing.Color.Black;
-            this.lbl_idperso.Location = new System.Drawing.Point(660, 305);
+            this.lbl_idperso.Location = new System.Drawing.Point(880, 375);
+            this.lbl_idperso.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_idperso.Name = "lbl_idperso";
-            this.lbl_idperso.Size = new System.Drawing.Size(24, 18);
+            this.lbl_idperso.Size = new System.Drawing.Size(32, 23);
             this.lbl_idperso.TabIndex = 51;
             this.lbl_idperso.Text = "00";
             this.lbl_idperso.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Frm_Regis_Huella
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(788, 521);
+            this.ClientSize = new System.Drawing.Size(1051, 641);
             this.Controls.Add(this.lbl_idperso);
             this.Controls.Add(this.btn_cancelar);
             this.Controls.Add(this.label4);
@@ -250,6 +272,7 @@
             this.Controls.Add(this.EnrollmentControl);
             this.Controls.Add(this.pnl_titulo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Frm_Regis_Huella";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registro de Huella";

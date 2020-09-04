@@ -16,6 +16,7 @@ using MSistemaAsistencia.Personal;
 using Prj_Capa_Entidad;
 using System.IO;
 using MSistemaAsistencia.Informes;
+using MicroSisPlani.Personal;
 
 namespace MSistemaAsistencia
 {
@@ -335,7 +336,7 @@ namespace MSistemaAsistencia
                     picuser.Image = Properties.Resources.user;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 throw;
@@ -544,6 +545,31 @@ namespace MSistemaAsistencia
             }
         }
 
-       
+        private void bt_registrarHuellaDigital_Click(object sender, EventArgs e)
+        {
+            Frm_Filtro fil = new Frm_Filtro();
+            Frm_Regis_Huella per = new Frm_Regis_Huella();
+
+            //primero la id personal
+            if (lsv_person.SelectedIndices.Count == 0)
+            {
+                MessageBox.Show("Selecciona el Personal para Registrar sus Datos","Advertencia de Seguridad", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                var lsv = lsv_person.SelectedItems[0]; // si no se selecciona nada
+                string xidsocio = lsv.SubItems[0].Text;
+
+                fil.Show();
+                per.Buscar_Personal_ParaEditar(xidsocio);
+                per.ShowDialog();
+                fil.Hide();
+                if (Convert.ToString(per.Tag) == "")
+                    return;
+                {
+                    Cargar_todo_Personal();
+                }
+            }
+        }
     }
 }

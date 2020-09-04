@@ -94,6 +94,12 @@
     <Compile Include="Fmr_Login.Designer.cs">
       <DependentUpon>Fmr_Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_Marcar_Asistencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Marcar_Asistencia.Designer.cs">
+      <DependentUpon>Frm_Marcar_Asistencia.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm_Principal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +130,12 @@
     <Compile Include="Msm_Forms\Frm_Sino.Designer.cs">
       <DependentUpon>Frm_Sino.cs</DependentUpon>
     </Compile>
+    <Compile Include="Msm_Forms\Frm_sinox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Msm_Forms\Frm_sinox.Designer.cs">
+      <DependentUpon>Frm_sinox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Msm_Forms\Msm_Bueno.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,6 +160,9 @@
     <EmbeddedResource Include="Fmr_Login.resx">
       <DependentUpon>Fmr_Login.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Marcar_Asistencia.resx">
+      <DependentUpon>Frm_Marcar_Asistencia.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm_Principal.resx">
       <DependentUpon>Frm_Principal.cs</DependentUpon>
     </EmbeddedResource>
@@ -162,6 +177,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Msm_Forms\Frm_Sino.resx">
       <DependentUpon>Frm_Sino.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Msm_Forms\Frm_sinox.resx">
+      <DependentUpon>Frm_sinox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Msm_Forms\Msm_Bueno.resx">
       <DependentUpon>Msm_Bueno.cs</DependentUpon>
