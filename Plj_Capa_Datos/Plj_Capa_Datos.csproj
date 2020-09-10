@@ -49,6 +49,7 @@
     <Compile Include="BD_Personal.cs" />
     <Compile Include="BD_Rol.cs" />
     <Compile Include="BD_Usuario.cs" />
+    <Compile Include="BD_Utilitario.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -184,7 +184,26 @@ namespace MSistemaAsistencia
         {
             ConfigurarListView();
             ConfiguraListview_Asis();
+            CargarHorario();
+            Verificar_Robot_de_Faltas();
         }
+
+        private void Verificar_Robot_de_Faltas()
+        {
+            string tipo;
+            tipo = RN_Utilitario.RN_Listar_TipoFalta(5);
+            if(tipo.Trim() == "Si")
+            {
+                timerFalta.Start();
+                rdb_ActivarRobot.Checked = true;
+
+            }else if(tipo.Trim() == "No")
+            {
+                timerFalta.Stop();
+                rdb_Desact_Robot.Checked = true;
+            }
+        }
+
 
         private void bt_copiarNroDNI_Click(object sender, EventArgs e)
         {
@@ -545,6 +564,8 @@ namespace MSistemaAsistencia
             }
         }
 
+
+
         private void bt_registrarHuellaDigital_Click(object sender, EventArgs e)
         {
             Frm_Filtro fil = new Frm_Filtro();
@@ -570,6 +591,158 @@ namespace MSistemaAsistencia
                     Cargar_todo_Personal();
                 }
             }
+        }
+
+        private void btn_Asis_With_Huella_Click(object sender, EventArgs e)
+        {
+            Frm_Filtro fis = new Frm_Filtro();
+
+            Frm_Marcar_Asistencia asis = new Frm_Marcar_Asistencia();
+            fis.Show();
+            asis.ShowDialog();
+            fis.Hide();
+        }
+
+        private void btn_Savedrobot_Click(object sender, EventArgs e)
+        {
+            RN_Utilitario uti = new RN_Utilitario();
+
+            uti.RN_Actualizar_RobotFalta(5, "Si");
+             if(BD_Utilitario.falta == true)
+             {
+                Msm_Bueno ok = new Msm_Bueno();
+                ok.Lbl_msm1.Text = "El Robot fue Actualizado";
+                ok.ShowDialog();
+
+                elTab1.SelectedTabPageIndex = 0;
+                elTabPage9.Visible = false;
+
+             }else if(rdb_Desact_Robot.Checked == true)
+             {
+                uti.RN_Actualizar_RobotFalta(5, "No");
+
+                if (BD_Utilitario.falta == true)
+                {
+                    Msm_Bueno ok = new Msm_Bueno();
+                    ok.Lbl_msm1.Text = "El Robot fue Actualizado";
+                    ok.ShowDialog();
+
+                    elTab1.SelectedTabPageIndex = 0;
+                    elTabPage9.Visible = false;
+                }
+             }
+        }
+
+        private void timerFalta_Tick(object sender, EventArgs e)
+        {
+            RN_Asistencia obj = new RN_Asistencia();
+            Frm_Filtro fis = new Frm_Filtro();
+            Frm_Advertencia adver = new Frm_Advertencia();
+            Msm_Bueno ok = new Msm_Bueno();
+            DataTable dataper = new DataTable();
+            RN_Personal objper = new RN_Personal();
+
+            int HoLimite = Dtp_Hora_Limite.Value.Hour;
+            int MiLimite = Dtp_Hora_Limite.Value.Minute;
+
+            int horaCaptu = DateTime.Now.Hour;
+            int minutoCaptu = DateTime.Now.Minute;
+            string Dniper = "";
+            int Cant = 0;
+            int TotalItem = 0;
+            string xidpersona = "";
+            string IdAsistencia = "";
+            string xjustificacion = "";
+
+            if (horaCaptu >= HoLimite)
+            {
+                if(minutoCaptu >= MiLimite)
+                {
+                    dataper = objper.RN_Leer_todoPersona();
+                    if (dataper.Rows.Count <= 0) return;
+                    TotalItem = dataper.Rows.Count;  // obtenemos el total de personas registradas
+
+                    foreach (DataRow Registro in dataper.Rows)
+                    {
+                        Dniper = Convert.ToString(Registro["DNIPR"]);
+                        xidpersona = Convert.ToString(Registro["Id_Pernl"]);
+
+                        if(obj.RN_Checar_SiPersonal_TieneAsistencia_Registrada(xidpersona.Trim()) == false)
+                        {
+                            if (obj.RN_Checar_SiPersonal_YaMarco_suFalta(xidpersona.Trim()) == false)
+                            {
+                                // llamar registrar falta
+                                RN_Asistencia objA = new RN_Asistencia();
+                                EN_Asistencia asi = new EN_Asistencia();
+                                IdAsistencia = RN_Utilitario.RN_NroDoc(3);
+
+                                // verificar si el personal tiene justificacion
+                                if(objA.RN_Verificar_Justificacion_Aprobada(xidpersona)== true)
+                                {
+                                    xjustificacion = "Falta tiene justificativo";
+                                }
+                                else
+                                {
+                                    xjustificacion = "No tiene Justificactivo";
+                                }
+
+                                obj.RN_Registrar_Falta_Personal(IdAsistencia, xidpersona, xjustificacion);
+                                if (BD_Asistencia.faltasaved == true)
+                                {
+                                    RN_Utilitario.RN_Actualizar_Tipo_Doc(3); // actualizamos el numero correlativo de asistencia
+                                    // contador: almacena la cantidad de faltas registradas
+                                    Cant += 1;
+                                }
+
+                            
+                            }
+                        }
+
+                    }// fin foreach
+
+                    if(Cant > 1)
+                    {
+                        timerFalta.Stop();
+                        fis.Show();
+                        ok.Lbl_msm1.Text = "un total de: " + Cant.ToString() + "/" + TotalItem + "faltas se han registrado exitosamente";
+                        ok.ShowDialog();
+                        fis.Hide();
+                    }
+                    else
+                    {
+                        timerFalta.Stop();
+                        fis.Show();
+                        ok.Lbl_msm1.Text = "el dia de hoy no falto nadie al trabajo, las " + TotalItem + "Pesonas Marcaron si Asistencia";
+                        ok.ShowDialog();
+                        fis.Hide();
+                    }
+
+                }
+            }
+        }
+
+        private void BT_imprimirAsistenciaDelDiaTool_Click(object sender, EventArgs e)
+        {
+            Frm_Filtro fil = new Frm_Filtro();
+            Frm_PrintAsis_DelDia asis = new Frm_PrintAsis_DelDia();
+            Frm_Solo_Fecha solo = new Frm_Solo_Fecha();
+
+            fil.Show();
+            solo.ShowDialog();
+            fil.Hide();
+
+            if (solo.Tag.ToString() == "") return;
+
+            // abajo
+            DateTime xdia = solo.dtp_fecha.Value;
+
+            fil.Show();
+            asis.tipoinfo = "deldia";
+            asis.Tag = xdia;
+            asis.ShowDialog();
+            fil.Hide();
+
+
         }
     }
 }

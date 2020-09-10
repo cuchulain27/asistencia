@@ -209,6 +209,7 @@
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.label21 = new System.Windows.Forms.Label();
             this.elDivider5 = new Klik.Windows.Forms.v1.EntryLib.ELDivider();
+            this.BT_imprimirAsistenciaDelDiaTool = new System.Windows.Forms.ToolStripMenuItem();
             this.SubMenu_Person.SuspendLayout();
             this.pnl_titu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picuser)).BeginInit();
@@ -301,7 +302,7 @@
             this.bt_solicitarJustificacion,
             this.sdToolStripMenuItem});
             this.SubMenu_Person.Name = "contextMenuStrip1";
-            this.SubMenu_Person.Size = new System.Drawing.Size(247, 276);
+            this.SubMenu_Person.Size = new System.Drawing.Size(247, 248);
             // 
             // bt_nuevoPersonal
             // 
@@ -549,6 +550,7 @@
             this.btn_Asis_With_Huella.TabIndex = 465;
             this.toolTip1.SetToolTip(this.btn_Asis_With_Huella, "Registrar Asistencia por Huella Digital");
             this.btn_Asis_With_Huella.UseVisualStyleBackColor = true;
+            this.btn_Asis_With_Huella.Click += new System.EventHandler(this.btn_Asis_With_Huella_Click);
             // 
             // btn_Asis_Manual
             // 
@@ -703,6 +705,10 @@
             this.elDivider1.TabIndex = 451;
             this.elDivider1.VisualStyle = Klik.Windows.Forms.v1.Common.ControlVisualStyles.Custom;
             // 
+            // timerFalta
+            // 
+            this.timerFalta.Tick += new System.EventHandler(this.timerFalta_Tick);
+            // 
             // subMenuJusti
             // 
             this.subMenuJusti.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -811,9 +817,10 @@
             this.bt_imprimirAsistenciaPorPersonal,
             this.toolStripSeparator15,
             this.bt_imprimirAsistenciaDelMes,
-            this.verAsistenciasDelDiaToolStripMenuItem});
+            this.verAsistenciasDelDiaToolStripMenuItem,
+            this.BT_imprimirAsistenciaDelDiaTool});
             this.subMenuAsistencia.Name = "contextMenuStrip1";
-            this.subMenuAsistencia.Size = new System.Drawing.Size(296, 268);
+            this.subMenuAsistencia.Size = new System.Drawing.Size(296, 322);
             // 
             // toolStripMenuItem1
             // 
@@ -2077,6 +2084,7 @@
             this.btn_Savedrobot.TextStyle.Text = "Listo";
             this.btn_Savedrobot.TextStyle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btn_Savedrobot.VisualStyle = Klik.Windows.Forms.v1.EntryLib.ButtonVisualStyles.Custom;
+            this.btn_Savedrobot.Click += new System.EventHandler(this.btn_Savedrobot_Click);
             // 
             // label18
             // 
@@ -2542,6 +2550,13 @@
             this.elDivider5.TabIndex = 456;
             this.elDivider5.VisualStyle = Klik.Windows.Forms.v1.Common.ControlVisualStyles.Custom;
             // 
+            // BT_imprimirAsistenciaDelDiaTool
+            // 
+            this.BT_imprimirAsistenciaDelDiaTool.Name = "BT_imprimirAsistenciaDelDiaTool";
+            this.BT_imprimirAsistenciaDelDiaTool.Size = new System.Drawing.Size(295, 26);
+            this.BT_imprimirAsistenciaDelDiaTool.Text = "Imprimir Asistencia Del Dia";
+            this.BT_imprimirAsistenciaDelDiaTool.Click += new System.EventHandler(this.BT_imprimirAsistenciaDelDiaTool_Click);
+            // 
             // Frm_Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -2791,5 +2806,6 @@
         private Klik.Windows.Forms.v1.EntryLib.ELDivider elDivider1;
         private System.Windows.Forms.DateTimePicker dtp_fechadeldia;
         private System.Windows.Forms.ToolStripMenuItem verAsistenciasDelDiaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem BT_imprimirAsistenciaDelDiaTool;
     }
 }

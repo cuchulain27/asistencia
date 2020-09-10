@@ -13,5 +13,11 @@ namespace Plj_Capa_Datos
             return @"Data Source=DESKTOP-DTE3BG8\SQLEXPRESS; Initial Catalog=MicroSisPlani;uid=sa;pwd=admin";
             //return @"Data Source=PC-ADMIN\SQLEXPRESS; Initial Catalog=MicroSisPlani;uid=sa;pwd=admin"; ;
         }
+
+        public static string Conectar2()
+        {
+            return @"Data Source=DESKTOP-DTE3BG8\SQLEXPRESS; Initial Catalog=MicroSisPlani;uid=sa;pwd=admin";
+            //return @"Data Source=PC-ADMIN\SQLEXPRESS; Initial Catalog=MicroSisPlani;uid=sa;pwd=admin"; ;
+        }
     }
 }

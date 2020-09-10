@@ -66,7 +66,7 @@ namespace MSistemaAsistencia
 
         private void xVerificationControl_OnComplete(object Control, FeatureSet FeatureSet, ref DPFP.Gui.EventHandlerStatus EventHandlerStatus)
         {
-            DPFP.Template TemplateBD = new DPFP.Template();
+            //DPFP.Template TemplateBD = new DPFP.Template();
             RN_Personal obj = new RN_Personal();
             RN_Asistencia objas = new RN_Asistencia();
             DataTable datospers = new DataTable();
@@ -98,8 +98,13 @@ namespace MSistemaAsistencia
                 var DatoPe = datospers.Rows[0];
                 foreach (DataRow xitem in datospers.Rows)
                 {
+                    if (TerminarBucle == true) return;
+
                     finguerByte = (byte[])xitem["FinguerPrint"];
                     NroIDPersona = Convert.ToString(xitem["Id_Pernl"]);
+
+
+                    DPFP.Template TemplateBD = new DPFP.Template();
 
                     TemplateBD.DeSerialize(finguerByte);
 
@@ -179,14 +184,53 @@ namespace MSistemaAsistencia
                                 xVerificationControl.Enabled = false;
                                 return;
                             }
+
+                            Calcular_Minutos_Tardanza();
+                            lbl_IdAsis.Text = RN_Utilitario.RN_NroDoc(3);
+                            objas.RN_Registrar_Entrada_Personal(lbl_IdAsis.Text, Lbl_Idperso.Text, lbl_hora.Text, Convert.ToDouble(lbl_totaltarde.Text), Convert.ToInt32(lbl_TotalHotrabajda.Text), lbl_justifi.Text);
+                            if (BD_Asistencia.Entrada == true)
+                            {
+                                RN_Utilitario.RN_Actualizar_Tipo_Doc(3);
+                                lbl_msm.BackColor = Color.YellowGreen;
+                                lbl_msm.ForeColor = Color.White;
+                                lbl_msm.Text = "La Entrada del Personal fue Registrada";
+                                tocar_timbreok();
+                                pnl_Msm.Visible = true;
+                                tmr_Conta.Enabled = true;
+                                xVerificationControl.Enabled = false;
+                                lbl_Cont.Text = "10";
+                                TerminarBucle = true;
+                            }
+
+                            
+
+
+                        }
+                    }// todo es true 
+                    else
+                    {
+                        if(xint == TotalFila)
+                        {
+                            if(TerminarBucle == false)
+                            {
+                                lbl_msm.Text = "La Huella no se encuentra registrada";
+                                lbl_msm.BackColor = Color.MistyRose;
+                                lbl_msm.ForeColor = Color.Red;
+                                tocar_timbre();
+                                lbl_Cont.Text = "10";
+                                xVerificationControl.Enabled = false;
+                                pnl_Msm.Visible = true;
+                                tmr_Conta.Enabled = true;
+                            }
                         }
                     }
+                    xint += 1;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                MessageBox.Show("Algo Salio Mal: " + ex.Message, "Advertencia del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
 
 
@@ -319,6 +363,11 @@ namespace MSistemaAsistencia
             xVerificationControl.Enabled = true;
 
 
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            lbl_hora.Text = DateTime.Now.ToString("hh:mm:ss");
         }
     }
 }
