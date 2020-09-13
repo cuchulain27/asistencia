@@ -117,6 +117,7 @@
             this.toolStripSeparator15 = new System.Windows.Forms.ToolStripSeparator();
             this.bt_imprimirAsistenciaDelMes = new System.Windows.Forms.ToolStripMenuItem();
             this.verAsistenciasDelDiaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.BT_imprimirAsistenciaDelDiaTool = new System.Windows.Forms.ToolStripMenuItem();
             this.elTab1 = new Klik.Windows.Forms.v1.EntryLib.ELTab();
             this.elTabPage6 = new Klik.Windows.Forms.v1.EntryLib.ELTabPage();
             this.label5 = new System.Windows.Forms.Label();
@@ -209,7 +210,6 @@
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.label21 = new System.Windows.Forms.Label();
             this.elDivider5 = new Klik.Windows.Forms.v1.EntryLib.ELDivider();
-            this.BT_imprimirAsistenciaDelDiaTool = new System.Windows.Forms.ToolStripMenuItem();
             this.SubMenu_Person.SuspendLayout();
             this.pnl_titu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picuser)).BeginInit();
@@ -569,6 +569,7 @@
             this.btn_Asis_Manual.TabIndex = 432;
             this.toolTip1.SetToolTip(this.btn_Asis_Manual, "Registrar Asistencia por DNI");
             this.btn_Asis_Manual.UseVisualStyleBackColor = true;
+            this.btn_Asis_Manual.Click += new System.EventHandler(this.btn_Asis_Manual_Click);
             // 
             // lbl_lupajusti
             // 
@@ -820,7 +821,7 @@
             this.verAsistenciasDelDiaToolStripMenuItem,
             this.BT_imprimirAsistenciaDelDiaTool});
             this.subMenuAsistencia.Name = "contextMenuStrip1";
-            this.subMenuAsistencia.Size = new System.Drawing.Size(296, 322);
+            this.subMenuAsistencia.Size = new System.Drawing.Size(296, 294);
             // 
             // toolStripMenuItem1
             // 
@@ -916,6 +917,13 @@
             this.verAsistenciasDelDiaToolStripMenuItem.Size = new System.Drawing.Size(295, 26);
             this.verAsistenciasDelDiaToolStripMenuItem.Text = "Ver Asistencias del dia";
             this.verAsistenciasDelDiaToolStripMenuItem.Click += new System.EventHandler(this.verAsistenciasDelDiaToolStripMenuItem_Click);
+            // 
+            // BT_imprimirAsistenciaDelDiaTool
+            // 
+            this.BT_imprimirAsistenciaDelDiaTool.Name = "BT_imprimirAsistenciaDelDiaTool";
+            this.BT_imprimirAsistenciaDelDiaTool.Size = new System.Drawing.Size(295, 26);
+            this.BT_imprimirAsistenciaDelDiaTool.Text = "Imprimir Asistencia Del Dia";
+            this.BT_imprimirAsistenciaDelDiaTool.Click += new System.EventHandler(this.BT_imprimirAsistenciaDelDiaTool_Click);
             // 
             // elTab1
             // 
@@ -2549,13 +2557,6 @@
             this.elDivider5.Size = new System.Drawing.Size(1643, 28);
             this.elDivider5.TabIndex = 456;
             this.elDivider5.VisualStyle = Klik.Windows.Forms.v1.Common.ControlVisualStyles.Custom;
-            // 
-            // BT_imprimirAsistenciaDelDiaTool
-            // 
-            this.BT_imprimirAsistenciaDelDiaTool.Name = "BT_imprimirAsistenciaDelDiaTool";
-            this.BT_imprimirAsistenciaDelDiaTool.Size = new System.Drawing.Size(295, 26);
-            this.BT_imprimirAsistenciaDelDiaTool.Text = "Imprimir Asistencia Del Dia";
-            this.BT_imprimirAsistenciaDelDiaTool.Click += new System.EventHandler(this.BT_imprimirAsistenciaDelDiaTool_Click);
             // 
             // Frm_Principal
             // 

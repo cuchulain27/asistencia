@@ -27,7 +27,7 @@ namespace Plj_Capa_Datos
             _with1.CommandTimeout = 20;
             _with1.CommandType = CommandType.StoredProcedure;
             _with1.Parameters.AddWithValue("@Usuario", Usuario);
-            _with1.Parameters.AddWithValue("@Contraseseña", Contraseña);
+            _with1.Parameters.AddWithValue("@Contraseña", Contraseña);
             try
             {
                 Cn.Open();

@@ -7,3 +7,12 @@ C:\Users\Shado\source\repos\MSistemaAsistencia\Plj_Capa_Datos\obj\Debug\Plj_Capa
 C:\Users\Shado\source\repos\MSistemaAsistencia\Plj_Capa_Datos\obj\Debug\Plj_Capa_Datos.csproj.CopyComplete
 C:\Users\Shado\source\repos\MSistemaAsistencia\Plj_Capa_Datos\obj\Debug\Plj_Capa_Datos.dll
 C:\Users\Shado\source\repos\MSistemaAsistencia\Plj_Capa_Datos\obj\Debug\Plj_Capa_Datos.pdb
+C:\Users\Shado\Documents\git\MSistemaAsistencia\Plj_Capa_Datos\bin\Debug\Plj_Capa_Datos.dll
+C:\Users\Shado\Documents\git\MSistemaAsistencia\Plj_Capa_Datos\bin\Debug\Plj_Capa_Datos.pdb
+C:\Users\Shado\Documents\git\MSistemaAsistencia\Plj_Capa_Datos\bin\Debug\Plj_Capa_Entidad.dll
+C:\Users\Shado\Documents\git\MSistemaAsistencia\Plj_Capa_Datos\bin\Debug\Plj_Capa_Entidad.pdb
+C:\Users\Shado\Documents\git\MSistemaAsistencia\Plj_Capa_Datos\obj\Debug\Plj_Capa_Datos.csprojAssemblyReference.cache
+C:\Users\Shado\Documents\git\MSistemaAsistencia\Plj_Capa_Datos\obj\Debug\Plj_Capa_Datos.csproj.CoreCompileInputs.cache
+C:\Users\Shado\Documents\git\MSistemaAsistencia\Plj_Capa_Datos\obj\Debug\Plj_Capa_Datos.csproj.CopyComplete
+C:\Users\Shado\Documents\git\MSistemaAsistencia\Plj_Capa_Datos\obj\Debug\Plj_Capa_Datos.dll
+C:\Users\Shado\Documents\git\MSistemaAsistencia\Plj_Capa_Datos\obj\Debug\Plj_Capa_Datos.pdb

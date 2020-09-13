@@ -58,7 +58,7 @@ namespace MSistemaAsistencia
             if (data.Rows.Count == 0) return;
             dtp_horaIngre.Value = Convert.ToDateTime(data.Rows[0]["HoEntrada"]);
             Lbl_HoraEntrada.Text = dtp_horaIngre.Value.Hour.ToString() + ":" + dtp_horaIngre.Value.Minute.ToString();
-            dtp_horaSalida.Value = Convert.ToDateTime(data.Rows[0]["HoEntrda"]);
+            dtp_horaSalida.Value = Convert.ToDateTime(data.Rows[0]["HoSalida"]);
             dtp_hora_tolercia.Value = Convert.ToDateTime(data.Rows[0]["MiTolrncia"]);
             Dtp_Hora_Limite.Value = Convert.ToDateTime(data.Rows[0]["HoLimite"]);
 

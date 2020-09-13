@@ -107,6 +107,12 @@
     <Compile Include="Frm_Marcar_Asistencia.Designer.cs">
       <DependentUpon>Frm_Marcar_Asistencia.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_Marcar_Asis_Manual.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Marcar_Asis_Manual.Designer.cs">
+      <DependentUpon>Frm_Marcar_Asis_Manual.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm_Principal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -181,6 +187,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_Marcar_Asistencia.resx">
       <DependentUpon>Frm_Marcar_Asistencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Marcar_Asis_Manual.resx">
+      <DependentUpon>Frm_Marcar_Asis_Manual.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_Principal.resx">
       <DependentUpon>Frm_Principal.cs</DependentUpon>

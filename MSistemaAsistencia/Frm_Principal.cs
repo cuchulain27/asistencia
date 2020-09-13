@@ -109,7 +109,7 @@ namespace MSistemaAsistencia
             DataTable dt = new DataTable();
 
             dt = obj.RN_Leer_todoPersona();
-            if(dt.Rows.Count >0)
+            if(dt.Rows.Count > 0)
             {
                 LlenarListView(dt);
             }
@@ -136,7 +136,7 @@ namespace MSistemaAsistencia
         {
             lsv_person.Items.Clear();
 
-            for(int i = 0; i > data.Rows.Count; i++)
+            for(int i = 0; i < data.Rows.Count; i++)
             {
                 DataRow dr = data.Rows[i];
                 ListViewItem list = new ListViewItem(dr["Id_Person"].ToString()); // cabezera de listview
@@ -742,6 +742,17 @@ namespace MSistemaAsistencia
             asis.ShowDialog();
             fil.Hide();
 
+
+        }
+
+        private void btn_Asis_Manual_Click(object sender, EventArgs e)
+        {
+            Frm_Filtro fil = new Frm_Filtro();
+            Frm_Marcar_Asis_Manual asis = new Frm_Marcar_Asis_Manual();
+
+            fil.Show();
+            asis.ShowDialog();
+            fil.Hide();
 
         }
     }
