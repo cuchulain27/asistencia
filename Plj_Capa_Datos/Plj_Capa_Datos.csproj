@@ -46,6 +46,7 @@
     <Compile Include="BD_conexion.cs" />
     <Compile Include="BD_Distrito.cs" />
     <Compile Include="BD_Horario.cs" />
+    <Compile Include="BD_Justificacion.cs" />
     <Compile Include="BD_Personal.cs" />
     <Compile Include="BD_Rol.cs" />
     <Compile Include="BD_Usuario.cs" />
