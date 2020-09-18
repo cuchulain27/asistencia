@@ -81,3 +81,4 @@ C:\Users\Shado\Documents\git\MSistemaAsistencia\MSistemaAsistencia\obj\Debug\MSi
 C:\Users\Shado\Documents\git\MSistemaAsistencia\MSistemaAsistencia\obj\Debug\MSistemaAsistencia.csproj.CopyComplete
 C:\Users\Shado\Documents\git\MSistemaAsistencia\MSistemaAsistencia\obj\Debug\MSistemaAsistencia.exe
 C:\Users\Shado\Documents\git\MSistemaAsistencia\MSistemaAsistencia\obj\Debug\MSistemaAsistencia.pdb
+C:\Users\Shado\Documents\git\MSistemaAsistencia\MSistemaAsistencia\obj\Debug\MSistemaAsistencia.Frm_Reg_Justiificacion.resources

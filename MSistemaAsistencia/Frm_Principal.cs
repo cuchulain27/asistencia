@@ -53,6 +53,7 @@ namespace MSistemaAsistencia
         {
             elTabPage7.Visible = true;
             elTab1.SelectedTabPageIndex = 1;
+            Cargar_todo_Personal();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -184,11 +185,13 @@ namespace MSistemaAsistencia
         {
             ConfigurarListView();
             ConfiguraListview_Asis();
+            ConfigurarLitsview_Justifi();
             CargarHorario();
             Verificar_Robot_de_Faltas();
+
         }
 
-        private void Verificar_Robot_de_Faltas()
+        private void Verificar_Robot_de_Faltas() 
         {
             string tipo;
             tipo = RN_Utilitario.RN_Listar_TipoFalta(5);
@@ -528,6 +531,9 @@ namespace MSistemaAsistencia
 
         private void elButton2_Click(object sender, EventArgs e)
         {
+            elTabPage10.Visible = true;
+            elTab1.SelectedTabPageIndex = 4;
+            Cargar_Todas_Justificaciones();
 
         }
 
@@ -762,7 +768,7 @@ namespace MSistemaAsistencia
 
         #region justificacion
 
-     
+
 
 
         private void ConfigurarLitsview_Justifi()
@@ -868,7 +874,7 @@ namespace MSistemaAsistencia
 
             }
 
-           
+
 
 
         }
@@ -900,7 +906,7 @@ namespace MSistemaAsistencia
                 string xidper = lsv.SubItems[1].Text;
                 string xstadojus = lsv.SubItems[6].Text;
 
-                if(xstadojus.Trim() == "Aprobado") { fil.Show(); adv.Lbl_Msm1.Text = "La Justificacion, ya  fue Aprobada"; adv.ShowDialog(); fil.Hide();  return; };
+                if (xstadojus.Trim() == "Aprobado") { fil.Show(); adv.Lbl_Msm1.Text = "La Justificacion, ya  fue Aprobada"; adv.ShowDialog(); fil.Hide(); return; };
 
                 sino.Lbl_msm1.Text = "¿estas Seguro de Aprobar la Justificacion?";
                 fil.Show();
@@ -908,7 +914,7 @@ namespace MSistemaAsistencia
                 fil.Hide();
 
 
-                if(Convert.ToString(sino.Tag) == "Si")
+                if (Convert.ToString(sino.Tag) == "Si")
                 {
                     obj.RN_Aprobar_Justificacion(xidjus, xidper);
                     if (BD_Justificacion.tryed == true)
@@ -917,6 +923,8 @@ namespace MSistemaAsistencia
                         ok.Lbl_msm1.Text = "Justificacion Aprobada";
                         ok.ShowDialog();
                         fil.Hide();
+
+
                         BuscarJustificacion_porValor(xidjus);
                     }
                 }
@@ -932,7 +940,7 @@ namespace MSistemaAsistencia
             DataTable dt = new DataTable();
 
             dt = obj.RN_BuscarJustificacio_porValor(xvalor.Trim());
-            if(dt.Rows.Count > 0)
+            if (dt.Rows.Count > 0)
             {
                 LLenarListview_Justi(dt);
 
@@ -940,16 +948,13 @@ namespace MSistemaAsistencia
             else { lsv_justifi.Items.Clear(); }
         }
 
-        #endregion
-
-
 
         private void bt_solicitarJustificacion_Click(object sender, EventArgs e)
         {
             Frm_Filtro fil = new Frm_Filtro();
             Frm_Reg_Justiificacion per = new Frm_Reg_Justiificacion();
 
-            if(lsv_person.SelectedIndices.Count == 0)
+            if (lsv_person.SelectedIndices.Count == 0)
             {
                 fil.Show();
                 MessageBox.Show("seleccione el personal por favor", "Advertencia de Seguridad", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -964,6 +969,7 @@ namespace MSistemaAsistencia
                 per.xedit = false;
                 per.txt_IdPersona.Text = xidsocio;
                 per.txt_nompersona.Text = xnombre;
+                per.txt_idjusti.Text = RN_Utilitario.RN_NroDoc(4);
                 per.ShowDialog();
                 fil.Hide();
 
@@ -972,12 +978,161 @@ namespace MSistemaAsistencia
                 {
                     Cargar_Todas_Justificaciones();
                     elTab1.SelectedTabPageIndex = 4;
-                    elTabPage10.Visible = true;    
+                    elTabPage10.Visible = true;
                 }
             }
 
         }
 
-       
+        private void bt_desaprobarJustificacion_Click(object sender, EventArgs e)
+        {
+            Frm_Advertencia adv = new Frm_Advertencia();
+            Frm_Sino sino = new Frm_Sino();
+            Msm_Bueno ok = new Msm_Bueno();
+            Frm_Filtro fil = new Frm_Filtro();
+            RN_Justificacion obj = new RN_Justificacion();
+
+            if (lsv_justifi.SelectedIndices.Count == 0)
+            {
+                fil.Show();
+                MessageBox.Show("Seleccione un item que desea desaprobar", "Advertencia de Seguridad", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                fil.Hide();
+            }
+            else
+            {
+                var lsv = lsv_justifi.SelectedItems[0];
+                string xidjus = lsv.SubItems[0].Text;
+                string xidper = lsv.SubItems[1].Text;
+                string xstadojus = lsv.SubItems[6].Text;
+
+                if (xstadojus.Trim() == "Falta Aprobado") { fil.Show(); adv.Lbl_Msm1.Text = "La Justificacion Seleccionada, aun no fue aprobada"; adv.ShowDialog(); fil.Hide(); return; };
+
+                sino.Lbl_msm1.Text = "¿estas Seguro que desea  desaprobar la Justificacion?" + "\n\r" + " -Recuerda que este proceso esta bajo tu responsabilidad";
+                fil.Show();
+                sino.ShowDialog();
+                fil.Hide();
+
+
+                if (Convert.ToString(sino.Tag) == "Si")
+                {
+                    obj.RN_Desaprobar_Justificacion(xidjus, xidper);
+                    if (BD_Justificacion.tryed == true)
+                    {
+                        fil.Show();
+                        ok.Lbl_msm1.Text = "Justificacion Desaprobada";
+                        ok.ShowDialog();
+                        fil.Hide();
+
+
+                        BuscarJustificacion_porValor(xidjus);
+                    }
+                }
+
+            }
+
+
+        }
+
+
+        private void bt_ElimiJusti_Click(object sender, EventArgs e)
+        {
+            Frm_Advertencia adv = new Frm_Advertencia();
+            Frm_Sino sino = new Frm_Sino();
+            Msm_Bueno ok = new Msm_Bueno();
+            Frm_Filtro fil = new Frm_Filtro();
+            RN_Justificacion obj = new RN_Justificacion();
+
+            if (lsv_justifi.SelectedIndices.Count == 0)
+            {
+                fil.Show();
+                adv.Lbl_Msm1.Text = "Seleccione el item que desea Eliminar";
+                adv.ShowDialog();
+                fil.Hide(); return;
+
+
+
+            }
+            else
+            {
+                var lsv = lsv_justifi.SelectedItems[0];
+                string xidjus = lsv.SubItems[0].Text;
+
+                sino.Lbl_msm1.Text = "Estas Seguro de Eliminar la Justificacion?" + "\n\r" + "- Recuerda que este proceso esta bajo tu responsabilidad";
+                fil.Show();
+                sino.ShowDialog();
+                fil.Hide();
+
+                if (Convert.ToString(sino.Tag) == "Si")
+                {
+                    obj.RN_Eliminar_Justificacion(xidjus);
+                    fil.Show();
+                    ok.Lbl_msm1.Text = "Justificacion Desaprobada";
+                    ok.ShowDialog();
+                    fil.Hide();
+
+
+                    BuscarJustificacion_porValor(xidjus);
+                }
+
+            }
+        }
+
+
+
+        private void bt_CopiarNroJusti_Click(object sender, EventArgs e)
+        {
+            Frm_Advertencia adv = new Frm_Advertencia();
+            Frm_Filtro fil = new Frm_Filtro();
+
+            if (lsv_justifi.SelectedIndices.Count == 0)
+            {
+                fil.Show();
+                adv.Lbl_Msm1.Text = "Seleccione el Item que desea Copiar";
+                adv.ShowDialog();
+                fil.Hide(); return;
+            }
+            else
+            {
+                var lsv = lsv_justifi.SelectedItems[0];
+                string xdni = lsv.SubItems[0].Text;
+
+                Clipboard.Clear();
+                Clipboard.SetText(xdni.Trim());
+            }
+        }
+
+        private void txt_buscarjusti_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                if(txt_buscarjusti.Text.Trim().Length > 2)
+                {
+                    BuscarJustificacion_porValor(txt_buscarjusti.Text);
+                }
+                else
+                {
+                    Cargar_Todas_Justificaciones();
+                }
+                
+            }
+        }
+
+        private void bt_cerrarjusti_Click(object sender, EventArgs e)
+        {
+            elTabPage10.Visible = false;
+            elTab1.Visible = true;
+            elTab1.SelectedTabPageIndex = 6;
+        }
+
+        private void lsv_justifi_MouseClick(object sender, MouseEventArgs e)
+        {
+            var lsv = lsv_justifi.SelectedItems[0]; // si no selecciono nada
+            string xnombre = lsv.SubItems[7].Text;
+
+            lbl_Detalle.Text = xnombre.Trim();
+        }
+
+        #endregion
     }
+
 }
