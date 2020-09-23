@@ -38,5 +38,10 @@ namespace MSistemaAsistencia.Msm_Forms
                 u.Mover_formulario(this);
             }
         }
+
+        private void Lbl_msm1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

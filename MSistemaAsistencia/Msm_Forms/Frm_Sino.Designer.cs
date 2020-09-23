@@ -121,8 +121,9 @@
             this.Lbl_msm1.Name = "Lbl_msm1";
             this.Lbl_msm1.Size = new System.Drawing.Size(505, 181);
             this.Lbl_msm1.TabIndex = 29;
-            this.Lbl_msm1.Text = "¿Quieres Quitarlo del Carrito?";
+            this.Lbl_msm1.Text = "¿Quieres cerrar sesion?";
             this.Lbl_msm1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.Lbl_msm1.Click += new System.EventHandler(this.Lbl_msm1_Click);
             // 
             // lbl_Nomalgo
             // 

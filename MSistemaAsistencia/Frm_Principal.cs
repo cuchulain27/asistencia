@@ -399,7 +399,7 @@ namespace MSistemaAsistencia
         {
             lsv_asis.Items.Clear();
 
-            for (int i = 0; i > data.Rows.Count; i++)
+            for (int i = 0; i < data.Rows.Count; i++)
             {
                 DataRow dr = data.Rows[i];
                 ListViewItem list = new ListViewItem(dr["Id_Person"].ToString()); // cabezera de listview
